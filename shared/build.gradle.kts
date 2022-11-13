@@ -1,3 +1,5 @@
+import com.android.build.gradle.tasks.createRepublishCxxBuildTask
+
 plugins {
     kotlin("multiplatform")
     id("com.android.library")
@@ -59,11 +61,18 @@ kotlin {
     }
 }
 
+sqldelight{
+    database("NoteDatabase"){
+        packageName = "com.rdika.noteappkmm.database"
+        sourceFolders = listOf("sqldelight")
+    }
+}
+
 android {
     namespace = "com.example.noteappkmm"
-    compileSdk = 32
+    compileSdk = 33
     defaultConfig {
         minSdk = 21
-        targetSdk = 32
+        targetSdk = 33
     }
 }
