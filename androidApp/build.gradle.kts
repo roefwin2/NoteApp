@@ -12,7 +12,7 @@ android {
     compileSdk = 33
     defaultConfig {
         applicationId = "com.example.noteappkmm.android"
-        minSdk = 21
+        minSdk = 26
         targetSdk = 33
         versionCode = 1
         versionName = "1.0"
@@ -22,6 +22,9 @@ android {
     }
     compileOptions{
         isCoreLibraryDesugaringEnabled = true
+        // Sets Java compatibility to Java 8
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
     }
     composeOptions {
         kotlinCompilerExtensionVersion = "1.3.0"
@@ -35,6 +38,11 @@ android {
         getByName("release") {
             isMinifyEnabled = false
         }
+    }
+
+    // For Kotlin projects
+    kotlinOptions {
+        jvmTarget = "1.8"
     }
 }
 
