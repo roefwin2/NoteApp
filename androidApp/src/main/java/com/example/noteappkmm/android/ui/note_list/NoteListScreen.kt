@@ -1,4 +1,4 @@
-package com.example.noteappkmm.android.note_list
+package com.example.noteappkmm.android.ui.note_list
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.fadeIn
@@ -25,10 +25,12 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavController
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun NoteListScreen(
+    navController: NavController,
     viewModel: NoteListViewModel = hiltViewModel()
 ) {
     val state by viewModel.state.collectAsState()
@@ -39,7 +41,7 @@ fun NoteListScreen(
     }
 
     Scaffold(floatingActionButton = {
-        FloatingActionButton(onClick = { /*TODO*/ }, backgroundColor = Color.Black) {
+        FloatingActionButton(onClick = { navController.navigate("note_details/-1L") }, backgroundColor = Color.Black) {
             Icon(imageVector = Icons.Default.Add, contentDescription = "Add note", tint = Companion.White)
         }
     }) { padding ->
@@ -58,7 +60,6 @@ fun NoteListScreen(
                     text = state.searchText,
                     isSearchActive = state.isSearchActive,
                     onTextChange = {
-
                         viewModel.onSearchTextChange(it)
                     },
                     onSearchClick = { viewModel.onToggleSearch() },
@@ -80,7 +81,9 @@ fun NoteListScreen(
                     NoteItem(
                         note = note,
                         backgroundColor = Color(note.coloHex),
-                        onNoteClick = {},
+                        onNoteClick = {
+                            navController.navigate("note_details/${note.id}")
+                        },
                         onDeleteClick = { viewModel.deleteById(note.id!!) },
                         modifier = Modifier
                             .fillMaxWidth()

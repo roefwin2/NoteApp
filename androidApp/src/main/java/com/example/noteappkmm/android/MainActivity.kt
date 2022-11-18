@@ -16,7 +16,14 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.noteappkmm.android.note_list.NoteListScreen
+import androidx.navigation.NavType
+import androidx.navigation.NavType.Companion
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
+import com.example.noteappkmm.android.ui.note_details.NoteDetailsScreen
+import com.example.noteappkmm.android.ui.note_list.NoteListScreen
 import dagger.hilt.android.AndroidEntryPoint
 
 @Composable
@@ -57,17 +64,27 @@ fun MyApplicationTheme(
         content = content
     )
 }
+
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             MyApplicationTheme {
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colors.background
-                ) {
-                   NoteListScreen()
+                val navController = rememberNavController()
+                NavHost(navController = navController, startDestination = "note_list") {
+                    composable("note_list") {
+                        NoteListScreen(navController)
+                    }
+                    composable("note_details/{noteId}", arguments = listOf(
+                        navArgument(name = "noteId") {
+                            type = NavType.LongType
+                            defaultValue = -1L // if not pass noteID we get -1L
+                        }
+                    )) { backstackEntry -> // contain information of the arguments
+                        val noteId = backstackEntry.arguments?.getLong("noteId") ?: 1L
+                        NoteDetailsScreen(noteId = noteId, navController)
+                    }
                 }
             }
         }

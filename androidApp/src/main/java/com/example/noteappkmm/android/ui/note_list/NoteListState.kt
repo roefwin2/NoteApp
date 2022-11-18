@@ -1,4 +1,4 @@
-package com.example.noteappkmm.android.note_list
+package com.example.noteappkmm.android.ui.note_list
 
 import com.example.noteappkmm.domain.note.Note
 

@@ -1,4 +1,4 @@
-package com.example.noteappkmm.android.note_list
+package com.example.noteappkmm.android.ui.note_list
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.fadeIn
@@ -50,7 +50,7 @@ fun HideableSearchTextField(
             }
         }
         AnimatedVisibility(
-            visible = isSearchActive, enter = fadeIn(), exit = fadeOut(), modifier = androidx.compose.ui.Modifier.align(
+            visible = !isSearchActive, enter = fadeIn(), exit = fadeOut(), modifier = androidx.compose.ui.Modifier.align(
                 Alignment.CenterEnd
             )
         ) {

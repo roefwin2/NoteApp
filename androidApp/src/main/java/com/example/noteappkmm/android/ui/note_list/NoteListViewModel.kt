@@ -1,4 +1,4 @@
-package com.example.noteappkmm.android.note_list
+package com.example.noteappkmm.android.ui.note_list
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
@@ -35,22 +35,6 @@ class NoteListViewModel @Inject constructor(
 
         )
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), NoteListState())
-
-    init {
-        viewModelScope.launch {
-            (1..10).forEach {
-                noteDataSource.insertNote(
-                    Note(
-                        null,
-                        title = "Note$it",
-                        content = "Content$it",
-                        coloHex = RedOrangeHex,
-                        created = DateTimeUtil.now()
-                    )
-                )
-            }
-        }
-    }
 
     fun loadNotes() {
         viewModelScope.launch {

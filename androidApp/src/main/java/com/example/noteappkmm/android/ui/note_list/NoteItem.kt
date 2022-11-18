@@ -1,4 +1,4 @@
-package com.example.noteappkmm.android.note_list
+package com.example.noteappkmm.android.ui.note_list
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -33,26 +33,27 @@ fun NoteItem(
     val formattedDate = remember(note.created) {
         DateTimeUtil.formatNoteDate(note.created)
     }
-
-    Column(modifier = Modifier
-        .clip(RoundedCornerShape(5.dp))
-        .background(backgroundColor)
-        .clickable { onNoteClick.invoke() }
-        .padding(8.dp)) {
-        Row(
-            horizontalArrangement = Arrangement.SpaceBetween,
-            modifier = Modifier.fillMaxWidth()
-        ) {//push all elements to the extremitate
-            Text(text = note.title, fontWeight = FontWeight.SemiBold, fontSize = 20.sp)
-            Icon(
-                modifier = Modifier.clickable(MutableInteractionSource(), null) { onDeleteClick.invoke() },
-                imageVector = Icons.Default.Close,
-                contentDescription = "delete note button"
-            )
+    Box(modifier = modifier) {
+        Column(modifier = Modifier
+            .clip(RoundedCornerShape(5.dp))
+            .background(backgroundColor)
+            .clickable { onNoteClick.invoke() }
+            .padding(16.dp)) {
+            Row(
+                horizontalArrangement = Arrangement.SpaceBetween,
+                modifier = Modifier.fillMaxWidth()
+            ) {//push all elements to the extremitate
+                Text(text = note.title, fontWeight = FontWeight.SemiBold, fontSize = 20.sp)
+                Icon(
+                    modifier = Modifier.clickable(MutableInteractionSource(), null) { onDeleteClick.invoke() },
+                    imageVector = Icons.Default.Close,
+                    contentDescription = "delete note button"
+                )
+            }
+            Spacer(modifier = Modifier.height(16.dp))
+            Text(text = note.content, fontWeight = FontWeight.Light)
+            Spacer(modifier = Modifier.height(16.dp))
+            Text(text = formattedDate, color = Color.DarkGray, modifier = Modifier.align(Alignment.End))
         }
-        Spacer(modifier = Modifier.height(16.dp))
-        Text(text = note.content, fontWeight = FontWeight.Light)
-        Spacer(modifier = Modifier.height(16.dp))
-        Text(text = formattedDate, color = Color.DarkGray, modifier = Modifier.align(Alignment.End))
     }
 }
