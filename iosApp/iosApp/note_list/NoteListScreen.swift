@@ -45,9 +45,11 @@ struct NoteListScreen<Destination: View>: View {
                     }){
                         NoteItem(note: note, onDeleteClick:{ viewModel.deleteNotesById(id: note.id?.int64Value)})
                     }
-                    
                 }
-            }
+            }.onAppear{
+                viewModel.loadNotes()
+            }.listStyle(.plain)
+                .listRowSeparator(.hidden)
         }
         .onAppear{
             viewModel.setNoteDataSource(noteDataSource: self.noteDataSource)
