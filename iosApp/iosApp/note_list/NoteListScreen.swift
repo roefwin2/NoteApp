@@ -24,7 +24,7 @@ struct NoteListScreen<Destination: View>: View {
     var body: some View {
         VStack{
             ZStack{
-                NavigationLink(destination: NoteDetailsScreen(noteDataSource:self.noteDataSource,noteId: self.selectedNoteId ?? 0xFFFFFF),isActive: $isNoteSelected){
+                NavigationLink(destination: NoteDetailsScreen(noteDataSource:self.noteDataSource,noteId: self.selectedNoteId),isActive: $isNoteSelected){
                     EmptyView()
                 }.hidden()
                 HideableSearchTextField<NoteDetailsScreen>(onSearchToggle:{ viewModel.toggleIsSearchActive()}, destinationProvider:{
@@ -49,6 +49,8 @@ struct NoteListScreen<Destination: View>: View {
                     }
                 }
             }.onAppear{
+                isNoteSelected = false
+                selectedNoteId = nil
                 viewModel.loadNotes()
             }.listStyle(.plain)
                 .listRowSeparator(.hidden)

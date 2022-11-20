@@ -13,6 +13,8 @@ struct NoteDetailsScreen: View {
     private var noteDataSource : NoteDataSource
     private var noteId :Int64?
     
+    @Environment(\.presentationMode) var  presentation
+    
     @StateObject private var viewModel = NoteDetailsViewModel(noteDataSource: nil)
     
     init(noteDataSource: NoteDataSource, noteId: Int64?) {
@@ -31,6 +33,7 @@ struct NoteDetailsScreen: View {
             .toolbar(content: {
                 Button(action: {
                     viewModel.saveNote {
+                        presentation.wrappedValue.dismiss()
                     }
                 }){
                     Image(systemName: "checkmark")

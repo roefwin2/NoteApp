@@ -39,6 +39,7 @@ extension NoteDetailsScreen{
         func saveNote(onSaved : @escaping () -> Void){
             let newNote = Note(id: self.noteId == nil ? nil : KotlinLong(value: self.noteId!), title: noteTitle, content: noteContent, coloHex: self.noteColor, created: DateTimeUtil().now())
             noteDataSource?.insertNote(note: newNote, completionHandler: { error in
+                onSaved()
             })
         }
         
