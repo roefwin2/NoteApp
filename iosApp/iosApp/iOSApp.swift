@@ -8,8 +8,10 @@ struct iOSApp: App {
 
     
 	var body: some Scene {
-		WindowGroup {
-            NoteListScreen<EmptyView>(noteDataSource: dataBaseModule.noteDataSource)
-		}
+        WindowGroup {
+            NavigationView{
+                NoteListScreen<EmptyView>(noteDataSource: dataBaseModule.noteDataSource)
+            }
+        }
 	}
 }

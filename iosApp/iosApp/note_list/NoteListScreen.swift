@@ -24,10 +24,12 @@ struct NoteListScreen<Destination: View>: View {
     var body: some View {
         VStack{
             ZStack{
-                NavigationLink(destination: NoteDetailsScreen(noteDataSource:self.noteDataSource,noteId: self.selectedNoteId),isActive: $isNoteSelected){
+                NavigationLink(destination: NoteDetailsScreen(noteDataSource:self.noteDataSource,noteId: self.selectedNoteId ?? 0xFFFFFF),isActive: $isNoteSelected){
                     EmptyView()
                 }.hidden()
-                HideableSearchTextField(onSearchToggle:{ viewModel.toggleIsSearchActive()}, destinationProvider:{EmptyView()}, isSearchActive:viewModel.isSearchActive, searchText: $viewModel.searchText)
+                HideableSearchTextField<NoteDetailsScreen>(onSearchToggle:{ viewModel.toggleIsSearchActive()}, destinationProvider:{
+                    NoteDetailsScreen(noteDataSource:noteDataSource, noteId: self.selectedNoteId)
+                }, isSearchActive:viewModel.isSearchActive, searchText: $viewModel.searchText)
                     .frame(maxWidth:.infinity,minHeight: 40)
                     .padding()
                 

@@ -15,6 +15,7 @@
 		F82E4B54292916E800CBBE34 /* NoteItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82E4B53292916E800CBBE34 /* NoteItem.swift */; };
 		F82E4B5629291D5F00CBBE34 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82E4B5529291D5F00CBBE34 /* Colors.swift */; };
 		F82E4B5929292ED300CBBE34 /* NoteDetailsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82E4B5829292ED300CBBE34 /* NoteDetailsScreen.swift */; };
+		F83E433F292A88E400FF5701 /* NoteDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83E433E292A88E400FF5701 /* NoteDetailsViewModel.swift */; };
 		F8D85B332927FE8B00300BE3 /* NoteListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8D85B322927FE8B00300BE3 /* NoteListViewModel.swift */; };
 		F8D85B352927FEBD00300BE3 /* NoteListScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8D85B342927FEBD00300BE3 /* NoteListScreen.swift */; };
 /* End PBXBuildFile section */
@@ -43,6 +44,7 @@
 		F82E4B53292916E800CBBE34 /* NoteItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteItem.swift; sourceTree = "<group>"; };
 		F82E4B5529291D5F00CBBE34 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		F82E4B5829292ED300CBBE34 /* NoteDetailsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDetailsScreen.swift; sourceTree = "<group>"; };
+		F83E433E292A88E400FF5701 /* NoteDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDetailsViewModel.swift; sourceTree = "<group>"; };
 		F8D85B322927FE8B00300BE3 /* NoteListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteListViewModel.swift; sourceTree = "<group>"; };
 		F8D85B342927FEBD00300BE3 /* NoteListScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteListScreen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -109,6 +111,7 @@
 			isa = PBXGroup;
 			children = (
 				F82E4B5829292ED300CBBE34 /* NoteDetailsScreen.swift */,
+				F83E433E292A88E400FF5701 /* NoteDetailsViewModel.swift */,
 			);
 			path = node_details;
 			sourceTree = "<group>";
@@ -216,6 +219,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F83E433F292A88E400FF5701 /* NoteDetailsViewModel.swift in Sources */,
 				F82E4B54292916E800CBBE34 /* NoteItem.swift in Sources */,
 				2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */,
 				F8D85B352927FEBD00300BE3 /* NoteListScreen.swift in Sources */,
