@@ -13,8 +13,6 @@ struct NoteItem: View {
 
     var note :Note
     var onDeleteClick : () -> Void
-    var onNoteCliked : () -> Void
-    
     
     var body: some View {
         VStack(alignment: .leading){
@@ -45,7 +43,7 @@ struct NoteItem: View {
 struct NoteItem_Previews: PreviewProvider {
     static var previews: some View {
         NoteItem(
-            note: Note(id: nil, title: "Note 1", content: "Content 1",coloHex: 0xFF2341, created: DateTimeUtil().now()), onDeleteClick:{ }, onNoteCliked: {}
+            note: Note(id: nil, title: "Note 1", content: "Content 1",coloHex: 0xFF2341, created: DateTimeUtil().now()), onDeleteClick:{ }
         )
     }
 }
